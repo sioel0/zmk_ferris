@@ -17,10 +17,11 @@
       tapping_term_ms = <150>;
       bindings = <&sk LSFT>, <&caps_word>;
     };
+
     bspc_del: backspace_delete {
       compatible = "zmk, behavior-mod-morph";
+      bindings = <&kp BACKSPACE>, <&kp DELETE>;
       #binding-cells = <0>;
-      bindings = <&kp BACKSPACE>, <&kp delete>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
     };
   };

@@ -11,7 +11,7 @@
 / {
 
   behaviors {
-    sft_caps: tap_dance_0 {
+    td0: tap_dance_0 {
       compatible = "zmk, behavior-tap-dance";
       #binding-cells = <0>;
       tapping_term_ms = <150>;
@@ -61,7 +61,7 @@
       display-name = "Navigation";
       bindings = <
         &kp ESC    &none      &none        &none            &none            &none         &kp LC(L)  &none      &none      &none 
-        &kp LC(A)  &none      &kp LC(S)    &sft_caps        &none            &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT  &none 
+        &kp LC(A)  &none      &kp LC(S)    &td0             &none            &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT  &none 
         &kp LC(Z)  &kp LC(X)  &kp LC(C)    &kp LC(D)        &kp LC(V)        &none         &none      &none      &none      &none 
                                            &trans           &trans           &trans        &trans
       >;

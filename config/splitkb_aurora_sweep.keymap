@@ -87,10 +87,10 @@
     navigation {
       display-name = "Navigation";
       bindings = <
-        &kp ESC    &none         &none        &kp MOU_AIM    &none            &kp HCLCK &kp CLEAR   &kp NTAB          &kp PTAB &kp STAMP 
-        &kp TMUX_LEAD &kp SSNIP &kp SAVE    &cte             &kp PT_RUN      &kp LEFT      &kp DOWN    &kp UP               &kp RIGHT       &none 
-        &kp UNDO  &kp CUT     &kp COPY    &kp LOGOUT        &kp PASTE        &kp FEXPL     &kp NWIN &kp PWIN      &none           &none 
-                                              &trans           &trans           &trans        &trans
+        &kp ESC       &none         &none        &kp MOU_AIM    &none            &kp HCLCK     &kp CLEAR   &kp NTAB             &kp PTAB  &kp STAMP 
+        &kp TMUX_LEAD &kp SSNIP     &kp SAVE     &cte           &kp PT_RUN       &kp LEFT      &kp DOWN    &kp UP               &kp RIGHT &none 
+        &kp UNDO      &kp CUT       &kp COPY     &kp LOGOUT     &kp PASTE        &kp FEXPL     &kp NWIN    &kp PWIN             &none     &none 
+                                                 &trans         &trans           &trans        &trans
       >;
     };
 
@@ -122,7 +122,7 @@
         &bt BT_CLR  &none      &none        &bt BT_DISC 0    &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_DISC 1      &none      &none      &kp LOCK
         &bootloader &none      &none        &bt BT_DISC 2    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_DISC 3      &none      &none      &bootloader
         &sys_reset  &none      &none        &bt BT_DISC 4    &bt BT_SEL 4     &bt BT_SEL 5  &bt BT_DISC 5      &none      &none      &sys_reset
-                                           &trans           &trans           &trans        &trans
+                                            &trans           &trans           &trans        &trans
       >;
     };
   };

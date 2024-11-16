@@ -6,16 +6,40 @@
 #define _NAV 1
 #define _SYM 2
 #define _NUM 3
-#define _BLT 4
+#define _MOU 4
+#define _BLT 5
 
 / {
 
+  // combo setup
+  combos {
+    compatible = "zmk,combos";
+    // central thumb keys
+    combo_blt {
+      timeout = <200>;
+      key-positions = <31 32>;
+      bindings = <&mo _BLT>;
+    };
+    // left thumb keys
+    combo_shift {
+      timeout = <50>;
+      key-positions = <30 31>;
+      bindings = <&kp LSHFT>;
+    };
+    // right thumb keys
+    combo_capsword {
+      timeout = <50>;
+      key-positions = <32 33>;
+      bindings = <&caps_word>;
+    };
+  };
+
   behaviors {
-    td0: tap_dance_0 {
+    cte: capture_text_extractor {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <150>;
-      bindings = <&sk LSFT>, <&caps_word>;
+      bindings = <&kp LG(T)>, <&kp LG(LS(T))>;
     };
 
     bspc_del: backspace_delete {
@@ -26,19 +50,13 @@
     };
   };
 
+  // conditional layers setup
   conditional_layers {
     compatible = "zmk,conditional-layers";
     tri_layer {
       if-layers = <_NAV _SYM>;
       then-layer = <_NUM>;
     };
-  };
-
-  combos {
-    compatible = "zmk,combos";
-    timeout = <200>;
-    key-positions = <31 32>;
-    bindings = <&mo _BLT>;
   };
 
   keymap {
@@ -60,10 +78,10 @@
     navigation {
       display-name = "Navigation";
       bindings = <
-        &kp ESC    &none      &none        &none            &none            &none         &kp LC(L)  &none      &none      &none 
-        &kp LC(A)  &none      &kp LC(S)    &td0             &none            &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT  &none 
-        &kp LC(Z)  &kp LC(X)  &kp LC(C)    &kp LC(D)        &kp LC(V)        &none         &none      &none      &none      &none 
-                                           &trans           &trans           &trans        &trans
+        &kp ESC    &none         &none        &kp LG(LA(P))    &none            &kp LG(LS(H)) &kp LC(L)   &kp LC(TAB)          &kp LC(CS(TAB)) &kp PSCRN 
+        &kp LC(A)  &kp LG(LS(R)) &kp LC(S)    &cte             &kp LA(SPC)      &kp LEFT      &kp DOWN    &kp UP               &kp RIGHT       &none 
+        &kp LC(Z)  &kp LC(X)     &kp LC(C)    &kp LC(D)        &kp LC(V)        &kp LG(E)     &kp LA(TAB) &kp LA(LS(TAB))      &none           &none 
+                                              &trans           &trans           &trans        &trans
       >;
     };
 
@@ -84,7 +102,7 @@
       bindings = <
         &none      &none      &none        &kp C_MUTE       &kp C_BRI_DN     &kp C_BRI_UP  &kp KP_N7  &kp KP_N8  &kp KP_N9  &none
         &sk LWIN   &sk LALT   &sk LCTRL    &sk LSHFT        &kp C_VOL_DN     &kp C_VOL_UP  &kp KP_N4  &kp KP_N5  &kp KP_N6  &none
-        &none      &none      &none        &none            &none            &kp KP_N0     &kp KP_N1  &kp KP_N2  &kp KP_N3  &none
+        &kp LWIN   &kp LALT   &kp LCTRL    &kp LSHFT        &kp RCTRL        &kp KP_N0     &kp KP_N1  &kp KP_N2  &kp KP_N3  &none
                                            &trans           &trans           &trans        &trans
       >;
     };
@@ -92,9 +110,9 @@
     bl_settings {
       display-name = "Bluetooth settings";
       bindings = <
-        &none      &none      &none        &bt BT_CLR       &bt BT_SEL 0     &bt BT_SEL 4  &none      &none      &none      &none
-        &none      &none      &none        &none            &bt BT_SEL 1     &bt BT_SEL 5  &none      &none      &none      &none
-        &none      &none      &none        &none            &bt BT_SEL 2     &bt BT_SEL 6  &none      &none      &none      &none
+        &bt BT_CLR  &none      &none        &bt BT_DISC 0    &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_DISC 1      &none      &none      &kp LG(L)
+        &bootloader &none      &none        &bt BT_DISC 2    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_DISC 3      &none      &none      &bootloader
+        &sys_reset  &none      &none        &bt BT_DISC 4    &bt BT_SEL 4     &bt BT_SEL 5  &bt BT_DISC 5      &none      &none      &sys_reset
                                            &trans           &trans           &trans        &trans
       >;
     };

@@ -16,19 +16,19 @@
     compatible = "zmk,combos";
     // central thumb keys
     combo_blt {
-      timeout = <200>;
+      timeout-ms = <200>;
       key-positions = <31 32>;
       bindings = <&mo _BLT>;
     };
     // left thumb keys
     combo_shift {
-      timeout = <50>;
+      timeout-ms = <50>;
       key-positions = <30 31>;
       bindings = <&kp LSHFT>;
     };
     // right thumb keys
     combo_capsword {
-      timeout = <50>;
+      timeout-ms = <50>;
       key-positions = <32 33>;
       bindings = <&caps_word>;
     };

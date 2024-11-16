@@ -6,8 +6,8 @@
 #define _NAV 1
 #define _SYM 2
 #define _NUM 3
-#define _MOU 4
-#define _BLT 5
+//#define _MOU 4
+#define _BLT 4
 
 / {
 

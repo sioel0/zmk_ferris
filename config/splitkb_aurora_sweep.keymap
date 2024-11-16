@@ -78,7 +78,7 @@
     navigation {
       display-name = "Navigation";
       bindings = <
-        &kp ESC    &none         &none        &kp LG(LA(P))    &none            &kp LG(LS(H)) &kp LC(L)   &kp LC(TAB)          &kp LC(CS(TAB)) &kp PSCRN 
+        &kp ESC    &none         &none        &kp LG(LA(P))    &none            &kp LG(LS(H)) &kp LC(L)   &kp LC(TAB)          &kp LC(LS(TAB)) &kp PSCRN 
         &kp LC(A)  &kp LG(LS(R)) &kp LC(S)    &cte             &kp LA(SPC)      &kp LEFT      &kp DOWN    &kp UP               &kp RIGHT       &none 
         &kp LC(Z)  &kp LC(X)     &kp LC(C)    &kp LC(D)        &kp LC(V)        &kp LG(E)     &kp LA(TAB) &kp LA(LS(TAB))      &none           &none 
                                               &trans           &trans           &trans        &trans

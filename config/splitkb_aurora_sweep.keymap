@@ -118,7 +118,7 @@
     };
 
     // layer 4 -> mouse
-    numbers {
+    mouse {
       display-name = "Mouse";
       bindings = <
         &none      &none            &mmv MOVE_UP   &none            &none            &none         &none           &msc MOVE_UP    &none            &none

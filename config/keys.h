@@ -11,7 +11,7 @@
 // general shortcuts
 #define CP LC(C)
 #define PASTE LC(V)
-#define CUT LC(X)
+#define CTRL_X LC(X)
 #define NWIN LA(TAB)
 #define PWIN LA(LS(TAB))
 #define NTAB LC(TAB)

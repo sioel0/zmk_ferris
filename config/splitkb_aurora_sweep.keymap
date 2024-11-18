@@ -61,7 +61,7 @@
 
     mou_bs_del: mouse_backspace_delete {
       compatible = "zmk,behavior-hold-tap";
-      #bindings-cells = <2>;
+      #binding-cells = <2>;
       flavor = "hold-preferred";
       quick-tap-ms = <200>;
       bindings = <&mo>, <&bspc_del>;

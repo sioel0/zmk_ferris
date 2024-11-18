@@ -58,6 +58,14 @@
       #binding-cells = <0>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
     };
+
+    mou_bs_del: mouse_backspace_delete {
+      compatible = "zmk,behavior-hold-tap";
+      #bindings-cells = <2>;
+      flavor = "hold-preferred";
+      quick-tap-ms = <200>;
+      bindings = <&mo>, <&bspc_del>;
+    };
   };
 
   // conditional layers setup
@@ -77,10 +85,10 @@
     colemak {
       display-name = "Colemak-dh";
       bindings = <
-        &kp Q      &kp W      &kp F        &kp P            &kp B            &kp J         &kp L      &kp U      &kp Y      &kp SEMI 
-        &kp A      &kp R      &kp S        &kp T            &kp G            &kp M         &kp N      &kp E      &kp I      &kp O 
-        &kp Z      &kp X      &kp C        &kp D            &kp V            &kp K         &kp H      &kp COMMA  &kp DOT    &kp SLASH 
-                              &lt _NAV TAB &mt RALT SPACE   &bspc_del        &lt _SYM RET
+        &kp Q      &kp W      &kp F        &kp P            &kp B                &kp J         &kp L      &kp U      &kp Y      &kp SEMI 
+        &kp A      &kp R      &kp S        &kp T            &kp G                &kp M         &kp N      &kp E      &kp I      &kp O 
+        &kp Z      &kp X      &kp C        &kp D            &kp V                &kp K         &kp H      &kp COMMA  &kp DOT    &kp SLASH 
+                              &lt _NAV TAB &mt RALT SPACE   &mouse_bs_del _MOU 0 &lt _SYM RET
       >;
     };
     

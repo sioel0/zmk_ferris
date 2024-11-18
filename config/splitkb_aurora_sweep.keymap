@@ -142,9 +142,9 @@
     mouse {
       display-name = "Mouse";
       bindings = <
-        &none      &none            &mmv MOVE_UP   &none            &none            &none         &none           &msc MOVE_UP    &none            &none
+        &none      &none            &mmv MOVE_UP   &none            &none            &none         &none           &msc MOVE_DOWN  &none            &none
         &none      &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT  &none            &none         &mkp LCLK       &none           &mkp RCLK        &none
-        &none      &none            &none          &none            &none            &none         &msc MOVE_LEFT  &msc MOVE_DOWN  &msc MOVE_RIGHT  &none
+        &none      &none            &none          &none            &none            &none         &msc MOVE_LEFT  &msc MOVE_UP    &msc MOVE_RIGHT  &none
                                              &trans           &trans           &trans        &trans
       >;
     };

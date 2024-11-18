@@ -88,9 +88,9 @@
     navigation {
       display-name = "Navigation";
       bindings = <
-        &kp ESC       &none         &none        &kp MOU_AIM    &none            &kp HCLCK     &kp CLEAR   &kp NTAB             &kp PTAB  &kp STAMP 
-        &kp TMUX_LEAD &kp SSNIP     &kp SAVE     &cte           &kp PT_RUN       &kp LEFT      &kp DOWN    &kp UP               &kp RIGHT &none 
-        &kp UNDO      &kp CUT       &kp COPY     &kp LOGOUT     &kp PASTE        &kp FEXPL     &kp NWIN    &kp PWIN             &none     &none 
+        &kp ESC       &none         &none        &kp MOU_AIM    &none            &kp HCLCK     &kp CLEAR_TERM   &kp NTAB             &kp PTAB  &kp STAMP 
+        &kp TMUX_LEAD &kp SSNIP     &kp SAVE     &cte           &kp PT_RUN       &kp LEFT      &kp DOWN         &kp UP               &kp RIGHT &none 
+        &kp CTRL_Z    &kp CTRL_X    &kp CP       &kp LOGOUT     &kp PASTE        &kp FEXPL     &kp NWIN         &kp PWIN             &none     &none 
                                                  &trans         &trans           &trans        &trans
       >;
     };

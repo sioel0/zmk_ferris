@@ -11,6 +11,7 @@
 #define _SYM  4
 #define _NUM  5
 #define _BLT  6
+#define _MBLT 7
 
 &lt {
   flavor = "hold-preferred";
@@ -43,6 +44,8 @@
       key-positions = <32 33>;
       bindings = <&caps_word>;
     };
+
+    // bt with mac for lock
   };
 
   behaviors {
@@ -87,6 +90,10 @@
     mac_tri_layer {
       if-layers = <_MNAV _SYM>;
       then-layer = <_NUM>;
+    };
+    mac_btl {
+      if-layers = <_MCOL _BLT>;
+      then-layer = <_MBLT>;
     };
   };
 
@@ -165,6 +172,17 @@
       display-name = "Bluetooth settings";
       bindings = <
         &bt BT_CLR  &none      &none        &bt BT_DISC 0    &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_DISC 1      &none      &none      &kp LOCK
+        &bootloader &none      &none        &bt BT_DISC 2    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_DISC 3      &none      &none      &bootloader
+        &sys_reset  &none      &none        &bt BT_DISC 4    &bt BT_SEL 4     &bt BT_SEL 5  &bt BT_DISC 5      &none      &none      &sys_reset
+                                            &trans           &trans           &trans        &trans
+      >;
+    };
+    
+    // layer 7 -> bluetooth settings mac -- used for locking mac when in use
+    mac_bl_settings {
+      display-name = "Bluetooth settings Mac";
+      bindings = <
+        &bt BT_CLR  &none      &none        &bt BT_DISC 0    &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_DISC 1      &none      &none      &kp M_LOCK
         &bootloader &none      &none        &bt BT_DISC 2    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_DISC 3      &none      &none      &bootloader
         &sys_reset  &none      &none        &bt BT_DISC 4    &bt BT_SEL 4     &bt BT_SEL 5  &bt BT_DISC 5      &none      &none      &sys_reset
                                             &trans           &trans           &trans        &trans

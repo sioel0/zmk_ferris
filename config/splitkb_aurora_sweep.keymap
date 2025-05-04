@@ -85,7 +85,7 @@
       then-layer = <_NUM>;
     };
     mac_tri_layer {
-      if-layers = <_MNAV, _SYM>;
+      if-layers = <_MNAV _SYM>;
       then-layer = <_NUM>;
     };
   };

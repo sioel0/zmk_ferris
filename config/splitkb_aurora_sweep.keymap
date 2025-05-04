@@ -1,15 +1,16 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/mouse.h>
-#include "keys.h"
+#include "win_linux_keys.h"
+#include "mac_keys.h"
 
-#define _COL 0
-#define _NAV 1
-#define _SYM 2
-#define _NUM 3
-#define _MOU 4
-#define _BLT 5
+#define _COL  0
+#define _MCOL 1
+#define _NAV  2
+#define _MNAV 3
+#define _SYM  4
+#define _NUM  5
+#define _BLT  6
 
 &lt {
   flavor = "hold-preferred";
@@ -17,18 +18,6 @@
 
 &mt {
   flavor = "tap-preferred";
-};
-
-&mmv {
-  acceleration-exponent = <1>;
-  time-to-max-speed-ms = <200>;
-  delay-ms = <0>;
-};
-
-&msc {
-  acceleration-exponent = <1>;
-  time-to-max-speed-ms = <500>;
-  delay-ms = <0>;
 };
 
 / {
@@ -71,23 +60,34 @@
       mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    mou_bs_del: mouse_backspace_delete {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "hold-preferred";
-      tapping-term-ms = <200>;
-      quick-tap-ms = <200>;
-      bindings = <&mo>, <&bspc_del>;
+    // toggle layer on
+    tog_on: toggle_layer_on_only {
+      compatible = "zmk,behavior-toggle-layer";
+      #binding-cells = <1>;
+      display-name = "Toggle layer on";
+      toggle-mode = "on";
+    };
+
+    // toggle layer off
+    tog_off: toggle_layer_on_only {
+      compatible = "zmk,behavior-toggle-layer";
+      #binding-cells = <1>;
+      display-name = "Toggle layer on";
+      toggle-mode = "off";
     };
   };
 
   // conditional layers setup
   conditional_layers {
     compatible = "zmk,conditional-layers";
-    tri_layer {
+    win_linux_tri_layer {
       if-layers = <_NAV _SYM>;
       then-layer = <_NUM>;
     };
+    mac_tri_layer {
+      if-layers = <_MNAV, _SYM>;
+      then-layer = <_NUM>;
+    }
   };
 
   keymap {
@@ -101,11 +101,22 @@
         &kp Q      &kp W      &kp F        &kp P            &kp B                &kp J         &kp L      &kp U      &kp Y      &kp SEMI 
         &kp A      &kp R      &kp S        &kp T            &kp G                &kp M         &kp N      &kp E      &kp I      &kp O 
         &kp Z      &kp X      &kp C        &kp D            &kp V                &kp K         &kp H      &kp COMMA  &kp DOT    &kp SLASH 
-                              &lt _NAV TAB &mt RALT SPACE   &mou_bs_del _MOU 0 &lt _SYM RET
+                              &lt _NAV TAB &mt RALT SPACE   &bspc_del            &lt _SYM RET
+      >;
+    };
+
+    // layer 1 -> colemak mac -- used when mac in use
+    mac_colemak {
+      display-name = "Mac Colemak-dh";
+      bindings = <
+        &kp Q      &kp W      &kp F         &kp P            &kp B                &kp J         &kp L      &kp U      &kp Y      &kp SEMI 
+        &kp A      &kp R      &kp S         &kp T            &kp G                &kp M         &kp N      &kp E      &kp I      &kp O 
+        &kp Z      &kp X      &kp C         &kp D            &kp V                &kp K         &kp H      &kp COMMA  &kp DOT    &kp SLASH 
+                              &lt _MNAV TAB &mt RALT SPACE   &bspc_del            &lt _SYM RET
       >;
     };
     
-    // layer 1 -> navigation
+    // layer 2 -> navigation
     navigation {
       display-name = "Navigation";
       bindings = <
@@ -116,7 +127,18 @@
       >;
     };
 
-    // layer 2 -> symbols
+    // layer 3 -> mac navigation -- used when connected to mac
+    mac_navigation {
+      display-name = "Mac Navigation";
+      bindings = <
+        &kp ESC       &none         &none        &none          &none            &none         &kp CLEAR_TERM   &kp M_STAMP          &kp M_FP_STAMP  &kp M_STAMP_CP 
+        &kp TMUX_LEAD &none         &kp M_SAVE   &none          &kp M_SPLGHT     &kp LEFT      &kp DOWN         &kp UP               &kp RIGHT       &none 
+        &kp M_UNDO    &kp M_CUT     &kp M_CP     &kp LOGOUT     &kp M_PASTE      &kp FINDER    &none            &none                &none           &none 
+                                                 &trans         &trans           &trans        &trans
+      >;
+    };
+
+    // layer 4 -> symbols
     symbols {
       display-name = "Symbols";
       bindings = <
@@ -127,29 +149,18 @@
       >;
     };
 
-    // layer 3 -> numbers
+    // layer 5; -> numbers
     numbers {
       display-name = "Numbers";
       bindings = <
-        &none      &none      &none        &kp C_MUTE       &kp C_BRI_DN     &kp C_BRI_UP  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_NLCK
-        &sk LWIN   &sk LALT   &sk LCTRL    &sk LSHFT        &kp C_VOL_DN     &kp C_VOL_UP  &kp KP_N4  &kp KP_N5  &kp KP_N6  &none
-        &kp LWIN   &kp LALT   &kp LCTRL    &kp LSHFT        &kp RCTRL        &kp KP_N0     &kp KP_N1  &kp KP_N2  &kp KP_N3  &none
-                                           &trans           &trans           &trans        &trans
+        &tog_on _MCOL &tog_off _MCOL      &none        &kp C_MUTE       &kp C_BRI_DN     &kp C_BRI_UP  &kp N7  &kp N8  &kp N9  &none
+        &sk LWIN      &sk LALT            &sk LCTRL    &sk LSHFT        &kp C_VOL_DN     &kp C_VOL_UP  &kp N4  &kp N5  &kp N6  &none
+        &kp LWIN      &kp LALT            &kp LCTRL    &kp LSHFT        &kp RCTRL        &kp KP_N0     &kp N1  &kp N2  &kp N3  &none
+                                                       &trans           &trans           &trans        &trans
       >;
     };
 
-    // layer 4 -> mouse
-    mouse {
-      display-name = "Mouse";
-      bindings = <
-        &none      &none            &mmv MOVE_UP   &none            &none            &none         &none           &msc MOVE_DOWN  &none            &none
-        &none      &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT  &none            &none         &mkp LCLK       &none           &mkp RCLK        &none
-        &none      &none            &none          &none            &none            &none         &msc MOVE_LEFT  &msc MOVE_UP    &msc MOVE_RIGHT  &none
-                                             &trans           &trans           &trans        &trans
-      >;
-    };
-
-    // layer 5 -> bluetooth settings
+    // layer 6 -> bluetooth settings
     bl_settings {
       display-name = "Bluetooth settings";
       bindings = <

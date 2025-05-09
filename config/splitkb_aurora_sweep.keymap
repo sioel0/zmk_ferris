@@ -6,12 +6,18 @@
 
 #define _COL  0
 #define _MCOL 1
-#define _NAV  2
-#define _MNAV 3
-#define _SYM  4
-#define _NUM  5
-#define _BLT  6
-#define _MBLT 7
+#define _MOU  2
+#define _NAV  3
+#define _MNAV 4
+#define _SYM  5
+#define _NUM  6
+#define _BLT  7
+#define _MBLT 8
+
+// enable mouse support
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500 // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20   // default: 10
+#include <dt-bindings/zmk/pointing.h>
 
 &lt {
   flavor = "hold-preferred";
@@ -63,6 +69,15 @@
       mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
+    mou_bs_del: mouse_backspace_delete {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "hold-preferred";
+      tapping-term-ms = <200>;
+      quick-tap-ms = <200>;
+      bindings = <&mo>, <&bspc_del>;
+    };
+
     // toggle layer on
     tog_on: toggle_layer_on_only {
       compatible = "zmk,behavior-toggle-layer";
@@ -108,7 +123,7 @@
         &kp Q      &kp W      &kp F        &kp P            &kp B                &kp J         &kp L      &kp U      &kp Y      &kp SEMI 
         &kp A      &kp R      &kp S        &kp T            &kp G                &kp M         &kp N      &kp E      &kp I      &kp O 
         &kp Z      &kp X      &kp C        &kp D            &kp V                &kp K         &kp H      &kp COMMA  &kp DOT    &kp SLASH 
-                              &lt _NAV TAB &mt RALT SPACE   &bspc_del            &lt _SYM RET
+                              &lt _NAV TAB &mt RALT SPACE   &mou_bspc_del _MOU   &lt _SYM RET
       >;
     };
 
@@ -119,7 +134,18 @@
         &kp Q      &kp W      &kp F         &kp P            &kp B                &kp J         &kp L      &kp U      &kp Y      &kp SEMI 
         &kp A      &kp R      &kp S         &kp T            &kp G                &kp M         &kp N      &kp E      &kp I      &kp O 
         &kp Z      &kp X      &kp C         &kp D            &kp V                &kp K         &kp H      &kp COMMA  &kp DOT    &kp SLASH 
-                              &lt _MNAV TAB &mt RALT SPACE   &bspc_del            &lt _SYM RET
+                              &lt _MNAV TAB &mt RALT SPACE   &mou_bspc_del _MOU   &lt _SYM RET
+      >;
+    };
+
+    // layer 2 -> mouse
+    mouse {
+      display-name = "Mouse";
+      bindings = <
+        &none           &none              &mmv MOVE_UP      &none            &none     &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT     &none 
+        &none           &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT  &none     &none          &mkp LCLK      &mkp RCLK    &none               &none 
+        &none           &none              &none             &none            &none     &none          &none          &none        &none               &none 
+                                                             &trans           &trans    &trans         &trans
       >;
     };
     

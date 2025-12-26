@@ -134,10 +134,10 @@
     shortcuts {
       display-name = "Shortcuts";
       bindings = <
-        &kp ESC    &none    &none     &none   &none        &none     &none     &none   &none      &none
-        &kp S_ALL  &none    &kp SAVE  &none   &kp RAYCAST  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none 
-        &kp UNDO   &kp CUT  &kp CP    &kp     &kp PASTE    &kp EXPL  &none     &none   &none      &none 
-                                      &trans  &trans       &trans    &trans
+        &kp ESC      &none      &none       &none   &none          &none       &none     &none   &none      &none
+        &kp W_S_ALL  &none      &kp W_SAVE  &none   &kp W_RAYCAST  &kp LEFT    &kp DOWN  &kp UP  &kp RIGHT  &none 
+        &kp W_UNDO   &kp W_CUT  &kp W_CP    &kp     &kp W_PASTE    &kp W_EXPL  &none     &none   &none      &none 
+                                            &trans  &trans         &trans      &trans
       >;
     };
 

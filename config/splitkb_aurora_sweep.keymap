@@ -93,20 +93,20 @@
     mac_colemak {
       display-name = "Mac_Colemak_Dh";
       bindings = <
-        &kp Q  &kp W  &kp F  &kp P            &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
-        &kp A  &kp R  &kp S  &kp T            &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
-        &kp Z  &kp X  &kp C  &kp D            &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
-                              &lt _MSHRT TAB  &kp SPACE  $bspc_del  &lt _SYM RET
+        &kp Q  &kp W  &kp F  &kp P            &kp B      &kp J      &kp L           &kp U      &kp Y    &kp SEMI 
+        &kp A  &kp R  &kp S  &kp T            &kp G      &kp M      &kp N           &kp E      &kp I    &kp O 
+        &kp Z  &kp X  &kp C  &kp D            &kp V      &kp K      &kp H           &kp COMMA  &kp DOT  &kp SLASH 
+                              &lt _MSHRT TAB  &kp SPACE  $bspc_del  &lt _SYM ENTER
       >;
     };
     // layer 1 -> colemak windows
     colemak {
       display-name = "Colemak_Dh";
       bindings = <
-        &kp Q  &kp W  &kp F  &kp P          &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
-        &kp A  &kp R  &kp S  &kp T          &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
-        &kp Z  &kp X  &kp C  &kp D          &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
-                             &lt _SHRT TAB  &kp SPACE  &bspc_del  &lt _SYM RET
+        &kp Q  &kp W  &kp F  &kp P          &kp B      &kp J      &kp L           &kp U      &kp Y    &kp SEMI 
+        &kp A  &kp R  &kp S  &kp T          &kp G      &kp M      &kp N           &kp E      &kp I    &kp O 
+        &kp Z  &kp X  &kp C  &kp D          &kp V      &kp K      &kp H           &kp COMMA  &kp DOT  &kp SLASH 
+                             &lt _SHRT TAB  &kp SPACE  &bspc_del  &lt _SYM ENTER
       >;
     };
     // layer 2 -> mac navigation -- used when connected to mac

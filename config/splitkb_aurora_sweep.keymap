@@ -14,10 +14,6 @@
 #define _BLT   7  // blt management when connected to win/linux
 #define _GMG   8  // gaming
 
-// enable mouse support
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500 // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20   // default: 10
-
 &lt {
   flavor = "hold-preferred";
 };
@@ -58,7 +54,6 @@
       #binding-cells = <0>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
     };
-
     // toggle layer on
     tog_on: toggle_layer_on_only {
       compatible = "zmk,behavior-toggle-layer";
@@ -66,7 +61,6 @@
       display-name = "Toggle layer on";
       toggle-mode = "on";
     };
-
     // toggle layer off
     tog_off: toggle_layer_off_only {
       compatible = "zmk,behavior-toggle-layer";
@@ -94,12 +88,10 @@
   };
 
   keymap {
-
     compatible = "zmk,keymap";
-    
     // layer 0 -> colemak mac -- used when mac in use
     mac_colemak {
-      display-name = "Mac Colemak-dh";
+      display-name = "Mac_Colemak_Dh";
       bindings = <
         &kp Q  &kp W  &kp F  &kp P            &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
         &kp A  &kp R  &kp S  &kp T            &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
@@ -107,10 +99,9 @@
                               &lt _MSHRT TAB  &kp SPC    $bspc_del  &lt _SYM RET
       >;
     };
-
     // layer 1 -> colemak windows
     colemak {
-      display-name = "Colemak-dh";
+      display-name = "Colemak_Dh";
       bindings = <
         &kp Q  &kp W  &kp F  &kp P          &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
         &kp A  &kp R  &kp S  &kp T          &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
@@ -118,10 +109,9 @@
                              &lt _SHRT TAB  &kp SPACE  &bspc_del  &lt _SYM RET
       >;
     };
-
     // layer 2 -> mac navigation -- used when connected to mac
     mac_shortcuts {
-      display-name = "Mac Shortcuts";
+      display-name = "Mac_Shortcuts";
       bindings = <
         &kp ESC      &none      &none       &none   &none          &none       &none     &none   &none      &none 
         &kp M_S_ALL  &none      &kp M_SAVE  &none   &kp M_RAYCAST  &kp LEFT    &kp DOWN  &kp UP  &kp RIGHT  &none 
@@ -129,7 +119,6 @@
                                             &trans  &trans         &trans      &trans
       >;
     };
-
     // layer 3 -> navigation
     shortcuts {
       display-name = "Shortcuts";
@@ -140,8 +129,6 @@
                                             &trans  &trans         &trans      &trans
       >;
     };
-
-
     // layer 4 -> symbols
     symbols {
       display-name = "Symbols";
@@ -152,7 +139,6 @@
                                        &trans    &trans     &trans     &trans
       >;
     };
-
     // layer 5; -> numbers
     numbers {
       display-name = "Numbers";
@@ -163,10 +149,9 @@
                                                 &trans      &trans        &trans        &trans
       >;
     };
-
     // layer 6 -> bluetooth settings mac -- used for locking mac when in use
     mac_bl_settings {
-      display-name = "Bluetooth settings Mac";
+      display-name = "Bluetooth_settings_Mac";
       bindings = <
         &bt BT_CLR  &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp M_LOCK
         &bootloader &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
@@ -174,10 +159,9 @@
                                   &trans         &trans        &trans        &trans
       >;
     };
-
     // layer 7 -> bluetooth settings
     bl_settings {
-      display-name = "Bluetooth settings";
+      display-name = "Bluetooth_settings";
       bindings = <
         &bt BT_CLR   &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp LOCK
         &bootloader  &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
@@ -185,10 +169,9 @@
                                    &trans         &trans        &trans        &trans
       >;
     };
-
     // layer 8 -> gaming
     gaming {
-      display-name = "Trackmania";
+      display-name = "Gaming";
       bindings = <
         &none  &none  &kp W  &none    &none    &none     &kp 7    &none  &none  &tog_off _GMG
         &none  &kp A  &kp S  &kp D    &none    &none     &kp 1    &none  &none  &none

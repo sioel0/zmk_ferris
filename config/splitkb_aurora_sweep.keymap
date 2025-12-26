@@ -96,7 +96,7 @@
         &kp Q  &kp W  &kp F  &kp P            &kp B      &kp J      &kp L           &kp U      &kp Y    &kp SEMI 
         &kp A  &kp R  &kp S  &kp T            &kp G      &kp M      &kp N           &kp E      &kp I    &kp O 
         &kp Z  &kp X  &kp C  &kp D            &kp V      &kp K      &kp H           &kp COMMA  &kp DOT  &kp SLASH 
-                              &lt _MSHRT TAB  &kp SPACE  $bspc_del  &lt _SYM ENTER
+                              &lt _MSHRT TAB  &kp SPACE  &bspc_del  &lt _SYM RET
       >;
     };
     // layer 1 -> colemak windows
@@ -106,7 +106,7 @@
         &kp Q  &kp W  &kp F  &kp P          &kp B      &kp J      &kp L           &kp U      &kp Y    &kp SEMI 
         &kp A  &kp R  &kp S  &kp T          &kp G      &kp M      &kp N           &kp E      &kp I    &kp O 
         &kp Z  &kp X  &kp C  &kp D          &kp V      &kp K      &kp H           &kp COMMA  &kp DOT  &kp SLASH 
-                             &lt _SHRT TAB  &kp SPACE  &bspc_del  &lt _SYM ENTER
+                             &lt _SHRT TAB  &kp SPACE  &bspc_del  &lt _SYM RET
       >;
     };
     // layer 2 -> mac navigation -- used when connected to mac
@@ -125,7 +125,7 @@
       bindings = <
         &kp ESC      &none      &none       &none   &none          &none       &none     &none   &none      &none
         &kp W_S_ALL  &none      &kp W_SAVE  &none   &kp W_RAYCAST  &kp LEFT    &kp DOWN  &kp UP  &kp RIGHT  &none 
-        &kp W_UNDO   &kp W_CUT  &kp W_CP    &kp     &kp W_PASTE    &kp W_EXPL  &none     &none   &none      &none 
+        &kp W_UNDO   &kp W_CUT  &kp W_CP    &none   &kp W_PASTE    &kp W_EXPL  &none     &none   &none      &none 
                                             &trans  &trans         &trans      &trans
       >;
     };

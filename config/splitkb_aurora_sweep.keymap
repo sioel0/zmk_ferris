@@ -178,6 +178,6 @@
         &none  &none  &none  &none    &none      &none     &none    &none  &none  &none
                              &kp ESC  &kp SPACE  &kp BSPC  &kp DEL
       >;
-    }
+    };
   };
 };

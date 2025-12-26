@@ -1,31 +1,11 @@
-// this fine contains all the definitions for the keyboard shortcuts mapped as single keys
+// this file contains all the Windows/Linux shortcuts needed
 
-// powertoys specific keys
-#define SNIP LG(T)
-#define SSNIP LG(LS(R))
-#define HCLCK LG(LS(H))
-#define MOU_AIM LG(LA(P))
-#define TEXTR LG(LS(T))
-#define PT_RUN LA(SPC)
-
-// general shortcuts
-#define CP LC(C)
-#define PASTE LC(V)
-#define CTRL_X LC(X)
-#define NWIN LA(TAB)
-#define PWIN LA(LS(TAB))
-#define NTAB LC(TAB)
-#define PTAB LC(LS(TAB))
-#define LOCK LG(L)
-#define SAVE LC(S)
-#define CTRL_Z LC(Z)
-#define FEXPL LG(E)
-
-// linux terminal
-#define TMUX_LEAD LC(A)
-#define KILL_LINE LC(K)
-#define CLEAR_TERM LC(L)
-#define LOGOUT LC(D)
-
-// rename key to have better understanding
-#define STAMP PSCRN
+#define CP LC(C) // copy
+#define PASTE LC(V) // paste
+#define LOCK LG(L) // lock screen
+#define SAVE LC(S) // save
+#define RAYCAST LA(SPC) // raycast
+#define UNDO LC(Z) // undo
+#define CUT LC(X) // undo
+#define EXPL LG(E) // exploarer
+#define S_ALL LC(A) // select all

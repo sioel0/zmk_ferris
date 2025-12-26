@@ -4,20 +4,19 @@
 #include "win_linux_keys.h"
 #include "mac_keys.h"
 
-#define _COL  0
-#define _MCOL 1
-#define _MOU  2
-#define _NAV  3
-#define _MNAV 4
-#define _SYM  5
-#define _NUM  6
-#define _BLT  7
-#define _MBLT 8
+#define _MCOL  0  // default mac keyboard
+#define _COL   1  // default win/linux keyboard
+#define _MSHRT 2  // mac shortcuts layer
+#define _SHRT  3  // win/linux shortcuts layer
+#define _SYM   4  // symbols
+#define _NUM   5  // numbers
+#define _MBLT  6  // blt management when connected to mac
+#define _BLT   7  // blt management when connected to win/linux
+#define _GMG   8  // gaming
 
 // enable mouse support
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500 // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20   // default: 10
-#include <dt-bindings/zmk/pointing.h>
 
 &lt {
   flavor = "hold-preferred";
@@ -50,32 +49,14 @@
       key-positions = <32 33>;
       bindings = <&caps_word>;
     };
-
-    // bt with mac for lock
   };
 
   behaviors {
-    cte: capture_text_extractor {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <150>;
-      bindings = <&kp SNIP>, <&kp TEXTR>;
-    };
-
     bspc_del: backspace_delete {
       compatible = "zmk,behavior-mod-morph";
       bindings = <&kp BACKSPACE>, <&kp DELETE>;
       #binding-cells = <0>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-
-    mou_bs_del: mouse_backspace_delete {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "hold-preferred";
-      tapping-term-ms = <200>;
-      quick-tap-ms = <200>;
-      bindings = <&mo>, <&bspc_del>;
     };
 
     // toggle layer on
@@ -116,69 +97,59 @@
 
     compatible = "zmk,keymap";
     
-    // layer 0 -> colemak -- default
-    colemak {
-      display-name = "Colemak-dh";
-      bindings = <
-        &kp Q      &kp W      &kp F        &kp P            &kp B                &kp J         &kp L      &kp U      &kp Y      &kp SEMI 
-        &kp A      &kp R      &kp S        &kp T            &kp G                &kp M         &kp N      &kp E      &kp I      &kp O 
-        &kp Z      &kp X      &kp C        &kp D            &kp V                &kp K         &kp H      &kp COMMA  &kp DOT    &kp SLASH 
-                              &lt _NAV TAB &mt RALT SPACE   &mou_bs_del _MOU     &lt _SYM RET
-      >;
-    };
-
-    // layer 1 -> colemak mac -- used when mac in use
+    // layer 0 -> colemak mac -- used when mac in use
     mac_colemak {
       display-name = "Mac Colemak-dh";
       bindings = <
-        &kp Q      &kp W      &kp F         &kp P            &kp B                &kp J         &kp L      &kp U      &kp Y      &kp SEMI 
-        &kp A      &kp R      &kp S         &kp T            &kp G                &kp M         &kp N      &kp E      &kp I      &kp O 
-        &kp Z      &kp X      &kp C         &kp D            &kp V                &kp K         &kp H      &kp COMMA  &kp DOT    &kp SLASH 
-                              &lt _MNAV TAB &mt RALT SPACE   &mou_bs_del _MOU     &lt _SYM RET
+        &kp Q  &kp W  &kp F  &kp P           &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
+        &kp A  &kp R  &kp S  &kp T           &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
+        &kp Z  &kp X  &kp C  &kp D           &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
+                              &lt _MNAV TAB  &kp SPC    $bspc_del  &lt _SYM RET
       >;
     };
 
-    // layer 2 -> mouse
-    mouse {
-      display-name = "Mouse";
+    // layer 1 -> colemak windows
+    colemak {
+      display-name = "Colemak-dh";
       bindings = <
-        &none           &none              &mmv MOVE_UP      &none            &none     &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT     &none 
-        &none           &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT  &none     &none          &mkp LCLK      &mkp RCLK    &none               &none 
-        &none           &none              &none             &none            &none     &none          &none          &none        &none               &none 
-                                                             &trans           &trans    &trans         &trans
-      >;
-    };
-    
-    // layer 2 -> navigation
-    navigation {
-      display-name = "Navigation";
-      bindings = <
-        &kp ESC       &none         &none        &kp MOU_AIM    &none            &kp HCLCK     &kp CLEAR_TERM   &kp NTAB             &kp PTAB  &kp STAMP 
-        &kp TMUX_LEAD &kp SSNIP     &kp SAVE     &cte           &kp PT_RUN       &kp LEFT      &kp DOWN         &kp UP               &kp RIGHT &none 
-        &kp CTRL_Z    &kp CTRL_X    &kp CP       &kp LOGOUT     &kp PASTE        &kp FEXPL     &kp NWIN         &kp PWIN             &none     &none 
-                                                 &trans         &trans           &trans        &trans
+        &kp Q  &kp W  &kp F  &kp P         &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
+        &kp A  &kp R  &kp S  &kp T         &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
+        &kp Z  &kp X  &kp C  &kp D         &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
+                             &lt _NAV TAB  &kp SPACE  &bspc_del  &lt _SYM RET
       >;
     };
 
-    // layer 3 -> mac navigation -- used when connected to mac
-    mac_navigation {
-      display-name = "Mac Navigation";
+    // layer 2 -> mac navigation -- used when connected to mac
+    mac_shortcuts {
+      display-name = "Mac Shortcuts";
       bindings = <
-        &kp ESC       &none         &none        &none          &none            &none         &kp CLEAR_TERM   &kp M_STAMP          &kp M_FP_STAMP  &kp M_STAMP_CP 
-        &kp TMUX_LEAD &none         &kp M_SAVE   &none          &kp M_SPLGHT     &kp LEFT      &kp DOWN         &kp UP               &kp RIGHT       &none 
-        &kp M_UNDO    &kp M_CUT     &kp M_CP     &kp LOGOUT     &kp M_PASTE      &kp FINDER    &none            &none                &none           &none 
-                                                 &trans         &trans           &trans        &trans
+        &kp ESC      &none      &none       &none   &none          &none       &none     &none   &none      &none 
+        &kp M_S_ALL  &none      &kp M_SAVE  &none   &kp M_RAYCAST  &kp LEFT    &kp DOWN  &kp UP  &kp RIGHT  &none 
+        &kp M_UNDO   &kp M_CUT  &kp M_CP    &none   &kp M_PASTE    &kp FINDER  &none     &none   &none      &none 
+                                            &trans  &trans         &trans      &trans
       >;
     };
+
+    // layer 3 -> navigation
+    shortcuts {
+      display-name = "Shortcuts";
+      bindings = <
+        &kp ESC    &none    &none     &none   &none        &none     &none     &none   &none      &none
+        &kp S_ALL  &none    &kp SAVE  &none   &kp RAYCAST  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none 
+        &kp UNDO   &kp CUT  &kp CP    &kp     &kp PASTE    &kp EXPL  &none     &none   &none      &none 
+                                      &trans  &trans       &trans    &trans
+      >;
+    };
+
 
     // layer 4 -> symbols
     symbols {
       display-name = "Symbols";
       bindings = <
-        &kp GRAVE  &kp BSLH   &kp LPAR     &kp LBKT         &kp LBRC         &kp RBRC      &kp RBKT   &kp RPAR   &kp MINUS  &kp PLUS
-        &kp EXCL   &kp AT     &kp HASH     &kp DLLR         &kp PRCNT        &kp CARET     &kp AMPS   &kp STAR   &kp UNDER  &kp EQUAL
-        &kp TILDE  &kp PIPE   &none        &kp SQT          &none            &none         &kp DQT    &kp LT     &kp GT     &none
-                                           &trans           &trans           &trans        &trans
+        &kp GRAVE  &kp BSLH  &kp LPAR  &kp LBKT  &kp LBRC   &kp RBRC   &kp RBKT  &kp RPAR  &kp MINUS  &kp PLUS
+        &kp EXCL   &kp AT    &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp STAR  &kp UNDER  &kp EQUAL
+        &kp TILDE  &kp PIPE  &none     &kp SQT   &none      &none      &kp DQT   &kp LT    &kp GT     &none
+                                       &trans    &trans     &trans     &trans
       >;
     };
 
@@ -186,33 +157,44 @@
     numbers {
       display-name = "Numbers";
       bindings = <
-        &tog_on _MCOL &tog_off _MCOL      &none        &kp C_MUTE       &kp C_BRI_DN     &kp C_BRI_UP  &kp N7  &kp N8  &kp N9  &none
-        &sk LWIN      &sk LALT            &sk LCTRL    &sk LSHFT        &kp C_VOL_DN     &kp C_VOL_UP  &kp N4  &kp N5  &kp N6  &none
-        &kp LWIN      &kp LALT            &kp LCTRL    &kp LSHFT        &kp RCTRL        &kp N0        &kp N1  &kp N2  &kp N3  &none
-                                                       &trans           &trans           &trans        &trans
+        &tog_on _COL  &tog_off _COL  &none      &kp C_MUTE  &kp C_BRI_DN  &kp C_BRI_UP  &kp N7  &kp N8  &kp N9  &tog_on _GMG
+        &sk LWIN      &sk LALT       &sk LCTRL  &sk LSHFT   &kp C_VOL_DN  &kp C_VOL_UP  &kp N4  &kp N5  &kp N6  &none
+        &kp LWIN      &kp LALT       &kp LCTRL  &kp LSHFT   &kp RCTRL     &kp N0        &kp N1  &kp N2  &kp N3  &none
+                                                &trans      &trans        &trans        &trans
       >;
     };
 
-    // layer 6 -> bluetooth settings
-    bl_settings {
-      display-name = "Bluetooth settings";
-      bindings = <
-        &bt BT_CLR  &none      &none        &bt BT_DISC 0    &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_DISC 1      &none      &none      &kp LOCK
-        &bootloader &none      &none        &bt BT_DISC 2    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_DISC 3      &none      &none      &bootloader
-        &sys_reset  &none      &none        &bt BT_DISC 4    &bt BT_SEL 4     &bt BT_SEL 5  &bt BT_DISC 5      &none      &none      &sys_reset
-                                            &trans           &trans           &trans        &trans
-      >;
-    };
-    
-    // layer 7 -> bluetooth settings mac -- used for locking mac when in use
+    // layer 6 -> bluetooth settings mac -- used for locking mac when in use
     mac_bl_settings {
       display-name = "Bluetooth settings Mac";
       bindings = <
-        &bt BT_CLR  &none      &none        &bt BT_DISC 0    &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_DISC 1      &none      &none      &kp M_LOCK
-        &bootloader &none      &none        &bt BT_DISC 2    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_DISC 3      &none      &none      &bootloader
-        &sys_reset  &none      &none        &bt BT_DISC 4    &bt BT_SEL 4     &bt BT_SEL 5  &bt BT_DISC 5      &none      &none      &sys_reset
-                                            &trans           &trans           &trans        &trans
+        &bt BT_CLR  &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp M_LOCK
+        &bootloader &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
+        &sys_reset  &none  &none  &bt BT_DISC 4  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_DISC 5  &none  &none  &sys_reset
+                                  &trans         &trans        &trans        &trans
       >;
     };
+
+    // layer 7 -> bluetooth settings
+    bl_settings {
+      display-name = "Bluetooth settings";
+      bindings = <
+        &bt BT_CLR   &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp LOCK
+        &bootloader  &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
+        &sys_reset   &none  &none  &bt BT_DISC 4  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_DISC 5  &none  &none  &sys_reset
+                                   &trans         &trans        &trans        &trans
+      >;
+    };
+
+    // layer 8 -> gaming
+    gaming {
+      display-name = "Trackmania";
+      bindings = <
+        &none  &none  &kp W  &none    &none    &none     &kp 7    &none  &none  &tog_off _GMG
+        &none  &kp A  &kp S  &kp D    &none    &none     &kp 1    &none  &none  &none
+        &none  &none  &none  &none    &none    &none     &none    &none  &none  &none
+                             &kp ESC  &kp SPC  &kp BSPC  &kp DEL
+      >;
+    }
   };
 };

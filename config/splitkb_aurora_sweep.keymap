@@ -8,7 +8,7 @@
 #define _COL   1  // default win/linux keyboard
 #define _MSHRT 2  // mac shortcuts layer
 #define _SHRT  3  // win/linux shortcuts layer
-#define _SYM   4  // symbols
+#define _S     4  // symbols
 #define _NUM   5  // numbers
 #define _MBLT  6  // blt management when connected to mac
 #define _BLT   7  // blt management when connected to win/linux
@@ -96,7 +96,7 @@
         &kp Q  &kp W  &kp F  &kp P            &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
         &kp A  &kp R  &kp S  &kp T            &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
         &kp Z  &kp X  &kp C  &kp D            &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
-                              &lt _MSHRT TAB  &kp SPC    $bspc_del  &lt _SYM RET
+                              &lt _MSHRT TAB  &kp SPC    $bspc_del  &lt _S RET
       >;
     };
     // layer 1 -> colemak windows
@@ -106,7 +106,7 @@
         &kp Q  &kp W  &kp F  &kp P          &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
         &kp A  &kp R  &kp S  &kp T          &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
         &kp Z  &kp X  &kp C  &kp D          &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
-                             &lt _SHRT TAB  &kp SPACE  &bspc_del  &lt _SYM RET
+                             &lt _SHRT TAB  &kp SPACE  &bspc_del  &lt _S RET
       >;
     };
     // layer 2 -> mac navigation -- used when connected to mac

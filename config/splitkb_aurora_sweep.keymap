@@ -80,11 +80,11 @@
   conditional_layers {
     compatible = "zmk,conditional-layers";
     win_linux_tri_layer {
-      if-layers = <_NAV _SYM>;
+      if-layers = <_SHRT _SYM>;
       then-layer = <_NUM>;
     };
     mac_tri_layer {
-      if-layers = <_MNAV _SYM>;
+      if-layers = <_MSHRT _SYM>;
       then-layer = <_NUM>;
     };
     mac_btl {
@@ -101,10 +101,10 @@
     mac_colemak {
       display-name = "Mac Colemak-dh";
       bindings = <
-        &kp Q  &kp W  &kp F  &kp P           &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
-        &kp A  &kp R  &kp S  &kp T           &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
-        &kp Z  &kp X  &kp C  &kp D           &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
-                              &lt _MNAV TAB  &kp SPC    $bspc_del  &lt _SYM RET
+        &kp Q  &kp W  &kp F  &kp P            &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
+        &kp A  &kp R  &kp S  &kp T            &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
+        &kp Z  &kp X  &kp C  &kp D            &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
+                              &lt _MSHRT TAB  &kp SPC    $bspc_del  &lt _SYM RET
       >;
     };
 
@@ -112,10 +112,10 @@
     colemak {
       display-name = "Colemak-dh";
       bindings = <
-        &kp Q  &kp W  &kp F  &kp P         &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
-        &kp A  &kp R  &kp S  &kp T         &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
-        &kp Z  &kp X  &kp C  &kp D         &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
-                             &lt _NAV TAB  &kp SPACE  &bspc_del  &lt _SYM RET
+        &kp Q  &kp W  &kp F  &kp P          &kp B      &kp J      &kp L         &kp U      &kp Y    &kp SEMI 
+        &kp A  &kp R  &kp S  &kp T          &kp G      &kp M      &kp N         &kp E      &kp I    &kp O 
+        &kp Z  &kp X  &kp C  &kp D          &kp V      &kp K      &kp H         &kp COMMA  &kp DOT  &kp SLASH 
+                             &lt _SHRT TAB  &kp SPACE  &bspc_del  &lt _SYM RET
       >;
     };
 

@@ -163,7 +163,7 @@
     bl_settings {
       display-name = "Bluetooth_settings";
       bindings = <
-        &bt BT_CLR   &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp LOCK
+        &bt BT_CLR   &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp W_LOCK
         &bootloader  &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
         &sys_reset   &none  &none  &bt BT_DISC 4  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_DISC 5  &none  &none  &sys_reset
                                    &trans         &trans        &trans        &trans

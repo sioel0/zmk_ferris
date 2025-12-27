@@ -10,8 +10,8 @@
 #define _SHRT  3  // win/linux shortcuts layer
 #define _SYM   4  // symbols
 #define _NUM   5  // numbers
-#define _MBLT  6  // blt management when connected to mac
-#define _BLT   7  // blt management when connected to win/linux
+#define _BLT   6  // blt management when connected to win/linux
+#define _MBLT  7  // blt management when connected to mac
 #define _GMG   8  // gaming
 
 &lt {
@@ -93,10 +93,10 @@
     mac_colemak {
       display-name = "Mac_Colemak_Dh";
       bindings = <
-        &kp Q  &kp W  &kp F  &kp P            &kp B      &kp J      &kp L           &kp U      &kp Y    &kp SEMI 
-        &kp A  &kp R  &kp S  &kp T            &kp G      &kp M      &kp N           &kp E      &kp I    &kp O 
-        &kp Z  &kp X  &kp C  &kp D            &kp V      &kp K      &kp H           &kp COMMA  &kp DOT  &kp SLASH 
-                              &lt _MSHRT TAB  &kp SPACE  &bspc_del  &lt _SYM RET
+        &kp Q  &kp W  &kp F  &kp P            &kp B            &kp J      &kp L           &kp U      &kp Y    &kp SEMI 
+        &kp A  &kp R  &kp S  &kp T            &kp G            &kp M      &kp N           &kp E      &kp I    &kp O 
+        &kp Z  &kp X  &kp C  &kp D            &kp V            &kp K      &kp H           &kp COMMA  &kp DOT  &kp SLASH 
+                              &lt _MSHRT TAB  &mt HYPER SPACE  &bspc_del  &lt _SYM RET
       >;
     };
     // layer 1 -> colemak windows
@@ -149,17 +149,7 @@
                                                 &trans      &trans        &trans        &trans
       >;
     };
-    // layer 6 -> bluetooth settings mac -- used for locking mac when in use
-    mac_bl_settings {
-      display-name = "Bluetooth_settings_Mac";
-      bindings = <
-        &bt BT_CLR  &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp M_LOCK
-        &bootloader &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
-        &sys_reset  &none  &none  &bt BT_DISC 4  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_DISC 5  &none  &none  &sys_reset
-                                  &trans         &trans        &trans        &trans
-      >;
-    };
-    // layer 7 -> bluetooth settings
+    // layer 6 -> bluetooth settings
     bl_settings {
       display-name = "Bluetooth_settings";
       bindings = <
@@ -167,6 +157,16 @@
         &bootloader  &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
         &sys_reset   &none  &none  &bt BT_DISC 4  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_DISC 5  &none  &none  &sys_reset
                                    &trans         &trans        &trans        &trans
+      >;
+    };
+    // layer 7 -> bluetooth settings mac -- used for locking mac when in use
+    mac_bl_settings {
+      display-name = "Bluetooth_settings_Mac";
+      bindings = <
+        &bt BT_CLR  &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp M_LOCK
+        &bootloader &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
+        &sys_reset  &none  &none  &bt BT_DISC 4  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_DISC 5  &none  &none  &sys_reset
+                                  &trans         &trans        &trans        &trans
       >;
     };
     // layer 8 -> gaming

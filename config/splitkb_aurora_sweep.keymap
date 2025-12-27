@@ -11,8 +11,7 @@
 #define _SYM   4  // symbols
 #define _NUM   5  // numbers
 #define _BLT   6  // blt management when connected to win/linux
-#define _MBLT  7  // blt management when connected to mac
-#define _GMG   8  // gaming
+#define _GMG   7  // gaming
 
 &lt {
   flavor = "hold-preferred";
@@ -80,10 +79,6 @@
     mac_tri_layer {
       if-layers = <_MSHRT _SYM>;
       then-layer = <_NUM>;
-    };
-    mac_btl {
-      if-layers = <_MCOL _BLT>;
-      then-layer = <_MBLT>;
     };
   };
 
@@ -159,17 +154,7 @@
                                    &trans         &trans        &trans        &trans
       >;
     };
-    // layer 7 -> bluetooth settings mac -- used for locking mac when in use
-    mac_bl_settings {
-      display-name = "Bluetooth_settings_Mac";
-      bindings = <
-        &bt BT_CLR  &none  &none  &bt BT_DISC 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_DISC 1  &none  &none  &kp M_LOCK
-        &bootloader &none  &none  &bt BT_DISC 2  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_DISC 3  &none  &none  &bootloader
-        &sys_reset  &none  &none  &bt BT_DISC 4  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_DISC 5  &none  &none  &sys_reset
-                                  &trans         &trans        &trans        &trans
-      >;
-    };
-    // layer 8 -> gaming
+    // layer 7 -> gaming
     gaming {
       display-name = "Gaming";
       bindings = <
